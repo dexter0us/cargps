@@ -1,8 +1,9 @@
 <?php
 // the car GPRS application.
-echo "Car Wash GPRS Server Application.";
+echo "Car Wash GPRS Server Application.\r\n";
 //Actual Code Starts here:
 //==========================================================
+$value = "";
 $arr1 =  array();
 $arr1 =  json_decode(file_get_contents('php://input'), true);
 
@@ -14,11 +15,10 @@ $u_num=$arr1['num'];
 $file1="time.txt";
 $myfile = fopen($file1, "a") or die("Unable to open file!");
 
-if (isset($dev_id)  && isset($w_con) && isset($s_con) && isset($num))
-	{
-		$value = "Device ID = " . $dev_id . ", Water Consumption = ". $w_con . ", Soap Consumption = " . $s_con . ", U_number = " . $num;
-		fwrite($myfile,$value);
-	}
+$value = "Device ID = " . $dev_id . ", Water Consumption = ". $w_con . ", Soap Consumption = " . $s_con . ", U_number = " . $u_num . PHP_EOL;
+	//echo $value;
+fwrite($myfile,$value);
+
 fclose($myfile);
 //-----------------------------------------------------------
 ?>
