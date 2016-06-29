@@ -1,1 +1,2 @@
 This is the test text.
+Device ID = , Water Consumption = , Soap Consumption = , U_number = 
