@@ -4,21 +4,13 @@ echo "Car Wash GPRS Server Application.\r\n";
 //Actual Code Starts here:
 //==========================================================
 $value = "";
+$arr1 =  array();
+$arr1 =  json_decode(file_get_contents('php://input'), true);
 
-$dev_id ="";
-$w_con="";
-$s_con="";
-$u_num="";
-
-if ($_SERVER["REQUEST_METHOD"] == "GET") 
-	{
-		if(isset($_GET['id'])){ $dev_id=$_GET['id']; }
-		if(isset($_GET['wc'])){ $w_con=$_GET['wc']; }
-		if(isset($_GET['sc'])){ $s_con=$_GET['sc']; }  
-		if(isset($_GET['num'])){ $u_num=$_GET['num']; }
-	}
-
-
+$dev_id = $arr1['id'];
+$w_con=$arr1['wc'];
+$s_con=$arr1['sc'];
+$u_num=$arr1['num'];
 
 $file1="time.txt";
 $myfile = fopen($file1, "a") or die("Unable to open file!");
@@ -29,5 +21,5 @@ fwrite($myfile,$value);
 
 fclose($myfile);
 //-----------------------------------------------------------
-// <url>?id=abssld&wc=98&sc=54&num=5454545885
+// { "id":"121543","wc":"124012","sc":"212121","num":"121212121212"}
 ?>
